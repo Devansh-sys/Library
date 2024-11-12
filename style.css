@@ -3,18 +3,43 @@
     padding: 0;
     letter-spacing: 2px;
 
+
 }
 
 body{
+    background-image: url("back.jpg") ;
+    background-size: cover;  /* Ensures the image covers the entire div */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background image fixed during scroll */
+    height: 100vh;
     margin: 10px;
     display: flex;
-    background-color: #FFFFFF;
 
+    /*background-color: #FFFFFF;*/
 
 }
-#cardContainer{
-    min-width: 250px;
+
+.bookCardsContainer{
     height: fit-content;
+    display: flex;
+    /*background-color: #FFFFFF;*/
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.formContainer{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    float: left;
+    height: 100%;
+    /*border-right: solid black 2px;*/
+}
+.cardContainer{
+    min-width: 250px;
+    height: 40%;
     border-radius: 20px;
     background-color: #f1b33a;
     padding: 10px;
@@ -24,8 +49,22 @@ body{
     /*color:    #F5F5F5 ;*/
 
 }
-#title{
+#myForm{
+    position: sticky;
+    top: 50%;
+    transform : translateY(-50%);
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: #490e6d solid 5px;
+    border-radius: 10px;
+}
+.title{
     /*padding: 10px;*/
+    font-weight: bold;
     text-align: center;
     /*color: #FFECB3;*/
     width: 100%;
@@ -35,7 +74,7 @@ body{
    /* padding-bottom: 10px ;*/
 
 }
-#details ul {
+.details ul {
     width: 100%;
     display: flex;
     gap: 20px;

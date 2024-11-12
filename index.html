@@ -10,18 +10,54 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="cardContainer">
-        <div id="title"><b>Once upon a time</b>
-        </div>
-        <hr>
-        <div id="details">
+
+    <div class="formContainer">
+        <form id="myForm" onsubmit="">
+
+           <div id="titleInput">
+               <label for="title">Book Name</label><br>
+               <input type="text" id="title" name="bookName" required><br>
+           </div>
+
+            <div id="authorInput">
+                <label for="author">Author:</label><br>
+                <input type="text" id="author" name="author" required><br>
+            </div>
+
+            <div id="pagesInput">
+                <label for="pages">Pages</label>
+                <input type="number" id="pages" name="pages" min="1" max="10000" step="1" required><br>
+
+            </div>
+
+            <div id="readStatusInput">
+                <label> Read Status:</label><br>
+                <label for="read">read</label>
+                <input type="radio" id="read" name="readStatus" value="read">
+                <label for="notRead">not read</label>
+                <input type="radio" id="notRead" name="readStatus" value="notRead"><br>
+            </div>
+
+            <input type="submit" value="Add">
+
+        </form>
+
+    </div>
+    <div class="bookCardsContainer">
+        <div class="cardContainer">
+            <div class="title">Once upon a time
+            </div>
+            <hr>
+            <div class="details">
                 <ul>
                     <li>Author : devansh</li>
                     <li>pages : 200</li>
                     <li class="status" >read</li>
                 </ul>
+            </div>
         </div>
     </div>
+
 
 
 </body>
