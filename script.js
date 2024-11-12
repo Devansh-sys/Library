@@ -13,3 +13,9 @@ function addBookToLibrary(title,author,pages,readOrNot) {
     myLibrary.push(newBook);
 
 }
+
+
+// function createCard(book){
+//     const cardContainer = document.createElement('div');
+//
+// }
