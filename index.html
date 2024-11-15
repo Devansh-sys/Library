@@ -11,38 +11,52 @@
 </head>
 <body>
 
+
+    <div class="header">
+        <div class="heading">Library</div>
+    </div>
+
+    <div id="menubar">
+        <img src="online-book.png" alt="Add book" style="width: 40px;height: 40px">
+    </div>
+
+
     <div class="formContainer">
+        <div class="closeButton">&times;</div>
         <form id="myForm" onsubmit="">
 
            <div id="titleInput">
-               <label for="title">Book Name</label><br>
-               <input type="text" id="title" name="bookName" required><br>
+               <label for="title">Title</label>
+               <input type="text" id="title" name="bookName" placeholder="The Da Vinci Code" required>
            </div>
 
             <div id="authorInput">
-                <label for="author">Author:</label><br>
-                <input type="text" id="author" name="author" required><br>
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" placeholder="Dan Brown" required>
             </div>
 
             <div id="pagesInput">
                 <label for="pages">Pages</label>
-                <input type="number" id="pages" name="pages" min="1" max="10000" step="1" required><br>
+                <input type="number" id="pages" name="pages" min="1" max="10000" step="1" placeholder="500" required>
 
             </div>
 
             <div id="readStatusInput">
-                <label id="statusLabel"> Read Status:</label><br>
-                <label for="read">read</label>
-                <input type="radio" id="read" name="readStatus" value="read">
-                <label for="notRead">not read</label>
-                <input type="radio" id="notRead" name="readStatus" value="notRead"><br>
+                <label id="statusLabel"> Read Status</label>
+                <div id="radioInputButtons">
+                    <label for="read">read</label>
+                    <input type="radio" id="read" name="readStatus" value="read">
+                    <label for="notRead">not read</label>
+                    <input type="radio" id="notRead" name="readStatus" value="notRead"><br>
+                </div>
             </div>
 
-            <input type="submit" value="Add">
+            <input type="submit" value="Add" style="align-self: center">
 
         </form>
 
     </div>
+
     <div class="bookCardsContainer">
         <div class="cardContainer">
             <div class="title">Once upon a time

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function addBookToLibrary(title,author,pages,readOrNot) {
-        newBook = new Book(title,author,pages,readOrNot);
+        let newBook = new Book(title,author,pages,readOrNot);
         myLibrary.push(newBook);
 
     }
@@ -53,9 +53,20 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function iterateLibrary(library){
-        library.forEach(function (item,index){
+        library.forEach(function(item){
             createCard(item);
         })
+    }
+
+
+    document.getElementById('menubar').onclick = function(){
+        document.querySelector('.formContainer').classList.add('open');
+        document.querySelector('.bookCardsContainer').classList.add('opened');
+    }
+
+    document.querySelector('.closeButton').onclick = function(){
+        document.querySelector('.formContainer').classList.remove('open');
+        document.querySelector('.bookCardsContainer').classList.remove('opened');
     }
 
     addBookToLibrary("The Hobbit","j.k rowling","350","not read");
@@ -91,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function(){
     addBookToLibrary("miles to go","devansh","100","not read");
     addBookToLibrary("miles to go","devansh","100","not read");
     addBookToLibrary("miles to go","devansh","100","not read");
+
     iterateLibrary(myLibrary);
+
 
 })
