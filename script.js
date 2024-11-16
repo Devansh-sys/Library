@@ -14,9 +14,14 @@ document.addEventListener('DOMContentLoaded', function(){
         myLibrary.push(newBook);
 
     }
+    addBookToLibrary("The Hobbit","j.k rowling","350","not read");
+    addBookToLibrary("immortals of meluha","amish","400","read");
+    addBookToLibrary("miles to go","devansh","100","not read");
+
+    iterateLibrary(myLibrary);
 
 
-    function createCard(book){
+    function createCard(book,index){
         const booksContainer = document.querySelector('.bookCardsContainer');
         const cardContainer = document.createElement('div');
         cardContainer.setAttribute('class','cardContainer');
@@ -39,25 +44,54 @@ document.addEventListener('DOMContentLoaded', function(){
         const list2 = document.createElement('li');
         list2.textContent = book.pages;
         const list3 = document.createElement('li');
-        list3.className = 'status';
-        list3.textContent = book.readOrNot;
+        list3.textContent = 'read Status';
+        const checkBox = document.createElement('input');
+        checkBox.setAttribute('type','checkbox');
+        checkBox.setAttribute('value','read');
+        checkBox.style.cssText = 'width:18px;height:18px;';
+        checkBox.checked = book.readOrNot === 'read';
+        list3.append(checkBox);
 
+        const deleteButton = document.createElement('button');
+        deleteButton.setAttribute('type','button');
+        deleteButton.setAttribute('value',index);
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'deleteButton';
         listContainer.append(list1,list2,list3);
 
         detailsContainer.appendChild(listContainer);
 
-        cardContainer.append(titleContainer,dividingLine,detailsContainer);
+        cardContainer.append(titleContainer,dividingLine,detailsContainer,deleteButton);
 
         booksContainer.appendChild(cardContainer);
 
     }
 
-    function iterateLibrary(library){
-        library.forEach(function(item){
-            createCard(item);
-        })
-    }
 
+
+
+
+    function iterateLibrary(library){
+        const booksContainer = document.querySelector('.bookCardsContainer');
+        booksContainer.textContent = '';
+        library.forEach(function(item,index){
+            createCard(item,index);
+            
+        })
+        const removeBtn = document.querySelectorAll(".deleteButton");
+        const removeButtons = Array.from(removeBtn);
+        console.log(removeButtons);
+
+        removeButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                console.log(`${button.value} clicked`)
+                let item = removeButtons.indexOf(button);
+                library.splice(item, 1);
+                console.log(library);
+                iterateLibrary(library);
+            });
+        });
+    }
 
     document.getElementById('menubar').onclick = function(){
         document.querySelector('.formContainer').classList.add('open');
@@ -69,41 +103,16 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelector('.bookCardsContainer').classList.remove('opened');
     }
 
-    addBookToLibrary("The Hobbit","j.k rowling","350","not read");
-    addBookToLibrary("immortals of meluha","amish","400","read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
-    addBookToLibrary("miles to go","devansh","100","not read");
+    document.querySelector('#myForm').addEventListener('submit', (event)=>{
+        event.preventDefault();
 
-    iterateLibrary(myLibrary);
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const pages = document.getElementById('pages').value;
+        const readOrNot = document.querySelector('input[name="readStatus"]:checked')?.value;
+        addBookToLibrary(title, author, pages, readOrNot);
 
+        iterateLibrary(myLibrary);
+    })
 
 })
